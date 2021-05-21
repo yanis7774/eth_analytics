@@ -1,9 +1,14 @@
 # Sample for creating alerts to monitor some value every x blocks 
 from web3 import Web3
 import threading 
+import os 
+
+# Import Alchemy API Key
+from dotenv import dotenv_values
+config = dotenv_values("../.env")
 
 # I prefer Alchemy as the pricing plans are friendly for people who aren't loaded : )
-w3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/YOUR_KEY_HERE'))
+w3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/' + config['API_KEY']))
 
 # this function checks the number of Uniswap v2 transactions in the latest block every 30 seconds
 def scan_blocks(): 

@@ -2,8 +2,12 @@
 # This is useful for counting unique users, transaction volume, etc. 
 from web3 import Web3
 
+# Import Alchemy API Key
+from dotenv import dotenv_values
+config = dotenv_values("../.env")
+
 # I prefer Alchemy as the pricing plans are friendly for people who aren't loaded : )
-w3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/YOUR_ID_HERE'))
+w3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/' + config['API_KEY']))
 
 # Get information about the latest block
 latest_block = w3.eth.block_number
