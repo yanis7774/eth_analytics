@@ -3,7 +3,7 @@ from web3 import Web3
 import threading 
 
 # I prefer Alchemy as the pricing plans are friendly for people who aren't loaded : )
-w3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/WyfOLCKKaqvFr9tfpghYRzjdDwSQA_Zk'))
+w3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/YOUR_KEY_HERE'))
 
 # this function checks the number of Uniswap v2 transactions in the latest block every 30 seconds
 def scan_blocks(): 
