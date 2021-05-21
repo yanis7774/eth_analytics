@@ -4,7 +4,7 @@ A repository to track blockchain analytics. This repo is WIP and code should be 
 
 ## Getting Started
 
-Using a python3 environment, run the following to install all the libraries used in this repository:
+Using a Python 3.x.x environment, run the following to install all the libraries used in this repository:
 ```
 pip install -r requirements.txt
 ```
