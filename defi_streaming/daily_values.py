@@ -3,7 +3,7 @@
 from web3 import Web3
 
 # I prefer Alchemy as the pricing plans are friendly for people who aren't loaded : )
-w3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/SxpXC1CiWNVaDUPHSQ_yBXy6cnTzdY0e'))
+w3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/YOUR_PROJECT_ID'))
 
 # Get the block number for the latest block
 latest_block = w3.eth.block_number
