@@ -6,3 +6,4 @@ websocket-client==0.57.0
 infura==0.2.1
 web3==5.17.0
 pandas==1.2.2
+python-dotenv==0.17.1
