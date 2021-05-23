@@ -1,6 +1,6 @@
-# Strategies
+# Borrow Health
 
-Various trading strategies for better allocation. Useful analytics and strategies at smaller size. Trading strategies try to take into account the gas fees that will impact smaller accounts.  
+This is a tool I built for myself to help prevent liquidations. Please don't actually use it for yourself or your account may magically combust. : ) 
 
 ## Getting Started
 

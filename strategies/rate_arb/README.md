@@ -1,6 +1,6 @@
-# Strategies
+# Interest Rate Arbitrage
 
-Various trading strategies for better allocation. Useful analytics and strategies at smaller size. Trading strategies try to take into account the gas fees that will impact smaller accounts.  
+WIP
 
 ## Getting Started
 
