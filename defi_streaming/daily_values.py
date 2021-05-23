@@ -1,4 +1,4 @@
-# This script uses Web3 to check how many transactions from the prior block belong to the defined smart contract.
+# This script helps you find the cumulative values from contracts over 24 hours
 # This is useful for counting unique users, transaction volume, etc. 
 from web3 import Web3
 
