@@ -1,6 +1,6 @@
-# Strategies
+# Ethereum Analytics
 
-Various trading strategies for better allocation. Useful analytics and strategies at smaller size. Trading strategies try to take into account the gas fees that will impact smaller accounts.  
+A repository to track Ethereum analytics. Both streaming and historical data, charts, and analysis. This repo is heavily WIP and code should be expected to break. Please don't test in prod. : ) 
 
 ## Getting Started
 
