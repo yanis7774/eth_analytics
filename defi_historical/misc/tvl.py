@@ -1,25 +1,57 @@
 import requests
 import json 
+from datetime import datetime
 
-tvl = requests.get('https://api.llama.fi/protocol/alchemix')
+'''
+API_KEY = ''
+eth_price = requests.get('https://api.glassnode.com/v1/metrics/market/price_usd_close', params={'a': 'ETH', 'i': '24h', 's': '1603843200', 'api_key': API_KEY})
+print(eth_price.json())
+print(len(eth_price.json()))
+gn_date = []
+gn_value = []
+for x in eth_price.json(): 
+    gn_date.append(datetime.fromtimestamp(int(x['t'])))
+    gn_value.append(x['v'])
+'''
+tvl = requests.get('https://api.llama.fi/protocol/saffron')
 tvl = tvl.json()
+print(tvl)
 tvl = tvl['tvl']
+
+'''
+tvl = requests.get('https://api.llama.fi/charts')
+tvl = tvl.json()
+print(len(tvl))
+'''
 date = []
 value = []
-print(tvl)
 for x in tvl: 
-    date.append(x['date'])
+    date.append(datetime.fromtimestamp(int(x['date'])))
     value.append(x['totalLiquidityUSD'])
 
 
 import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 
 fig = go.Figure()
 fig.add_trace(go.Scatter(x=date, y=value,
                     mode='lines',
-                    name='lines',
+                    name='eth_price',
                     line_color='blue'))
 
+fig = make_subplots(specs=[[{"secondary_y": True}]])
+
+
+#eth_price = '$' + str(int(float((eth_price.json()[-1]['v']))))
+fig.add_trace(go.Scatter(x=date, y=value,
+                    mode='lines',
+                    name='Total Value Locked',
+                    line_color='blue'))
+'''
+fig.add_trace(go.Scatter(x=gn_date, y=gn_value,
+                    mode='lines',
+                    name='Ethereum Price'),secondary_y=True)
+'''
 fig.update_layout(
     xaxis=dict(
         showline=True,
@@ -31,7 +63,7 @@ fig.update_layout(
         ticks='outside',
         tickfont=dict(
             family='Arial',
-            size=14,
+            size=22,
             color='rgb(82, 82, 82)',
         ),
     ),
@@ -43,7 +75,19 @@ fig.update_layout(
         gridcolor='#F4F4F4',
         tickfont=dict(
             family='Arial',
-            size=14,
+            size=22,
+            color='blue',
+        ),
+    ),
+    yaxis2=dict(
+        showgrid=True,
+        zeroline=True,
+        showline=True,
+        showticklabels=True,
+        gridcolor='#F4F4F4',
+        tickfont=dict(
+            family='Arial',
+            size=22,
             color='blue',
         ),
     ),

@@ -18,6 +18,9 @@ fig = go.Figure(
     ],
 )
 '''
+
+daily_volume = daily_dex_data.groupby(["date_trunc"]).usd_volume.sum().reset_index()
+print(daily_volume)
 fig = px.bar(daily_dex_data, x="date_trunc", y="usd_volume", color="project")
 
 fig.update_layout(
@@ -32,7 +35,7 @@ fig.update_layout(
         ticks='outside',
         tickfont=dict(
             family='Arial',
-            size=14,
+            size=22,
             color='rgb(82, 82, 82)',
         ),
     ),
@@ -44,7 +47,7 @@ fig.update_layout(
         gridcolor='#F4F4F4',
         tickfont=dict(
             family='Arial',
-            size=14,
+            size=22,
             color='grey',
         ),
     ),

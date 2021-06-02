@@ -1,19 +1,23 @@
 import pandas as pd 
-#import plotly.graph_objects as go
+import plotly.graph_objects as go
 import plotly.express as px
+import requests
+import json 
+from datetime import datetime
 
-# Users over time 
-lending_data = pd.read_csv('data/lending_deposits.csv')  
-borrow_data = pd.read_csv('data/borrowed.csv')  
-print(borrow_data)
-#cust_sell = mainDf[mainDf.Type == 'S']
-#cust_buy = mainDf[mainDf.Type == 'P']
-#lending_data = lending_data[lending_data.project != 'MakerDAO']
-#fig = px.area(lending_data, x="day", y="locked_usd_value", color="project",
-	      #line_group="project")
-borrow_data = borrow_data[borrow_data.project != 'MakerDAO']
-fig = px.area(borrow_data, x="time", y="supplied", color="project",
-	      line_group="project")
+
+troves_data = pd.read_csv('data/liquity_troves.csv')  
+tvl = requests.get('https://api.llama.fi/protocol/alchemix')
+tvl = tvl.json()
+tvl = tvl['tvl']
+date = []
+value = []
+for x in tvl: 
+    date.append(datetime.fromtimestamp(int(x['date'])))
+    value.append(x['totalLiquidityUSD'])
+
+fig = px.line(troves_data, x="hour", y="troves")
+#fig = px.line(ohm_apy_data, x="evt_block_time", y="apy")
 
 fig.update_layout(
     xaxis=dict(
@@ -26,7 +30,7 @@ fig.update_layout(
         ticks='outside',
         tickfont=dict(
             family='Arial',
-            size=21,
+            size=22,
             color='rgb(82, 82, 82)',
         ),
     ),
@@ -38,7 +42,7 @@ fig.update_layout(
         gridcolor='#F4F4F4',
         tickfont=dict(
             family='Arial',
-            size=21,
+            size=22,
             color='grey',
         ),
     ),

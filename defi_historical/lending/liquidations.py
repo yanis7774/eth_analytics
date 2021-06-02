@@ -1,20 +1,29 @@
 import pandas as pd 
-#import plotly.graph_objects as go
-import plotly.express as px
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+
+#import plotly.express as px
 
 # Users over time 
-lending_data = pd.read_csv('data/lending_deposits.csv')  
-borrow_data = pd.read_csv('data/borrowed.csv')  
-print(borrow_data)
-#cust_sell = mainDf[mainDf.Type == 'S']
-#cust_buy = mainDf[mainDf.Type == 'P']
-#lending_data = lending_data[lending_data.project != 'MakerDAO']
-#fig = px.area(lending_data, x="day", y="locked_usd_value", color="project",
-	      #line_group="project")
-borrow_data = borrow_data[borrow_data.project != 'MakerDAO']
-fig = px.area(borrow_data, x="time", y="supplied", color="project",
-	      line_group="project")
+aave_liquidations = pd.read_csv('data/aave_liquidations.csv')  
+compound_liquidations = pd.read_csv('data/compound_liquidations.csv')  
 
+aave_liquidations = aave_liquidations.head(7)
+compound_liquidations = compound_liquidations.head(7)
+print(aave_liquidations)
+
+compound_sum_liquidations = compound_liquidations['number_of_liquidations'].sum()
+aave_sum_liquidations = aave_liquidations['number_of_liquidations'].sum()
+aave_sum_collateral = aave_liquidations['collateral_liquidated_usd'].sum()
+print(aave_sum_collateral)
+#fig = px.line(aave_liquidations, x="day", y="number_of_liquidations")
+fig = make_subplots(specs=[[{"secondary_y": True}]])
+
+
+fig.add_trace(go.Bar(x=aave_liquidations['day'], y=aave_liquidations['collateral_liquidated_usd']))
+fig.add_trace(go.Scatter(x=aave_liquidations['day'], y=aave_liquidations['number_of_liquidations'],
+                    mode='lines',
+                    name='lines'),secondary_y=True)
 fig.update_layout(
     xaxis=dict(
         showline=True,

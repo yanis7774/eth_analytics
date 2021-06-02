@@ -9,17 +9,18 @@ compound_users_data = pd.read_csv('data/compound_users.csv')
 yearn_users_data = pd.read_csv('data/yearn_users.csv')  
 uniswap_retention = pd.read_csv('data/uniswap_retention.csv')  
 sushiswap_retention = pd.read_csv('data/sushiswap_retention.csv')
+cream_users_data = pd.read_csv('data/cream_users.csv')
 print(uniswap_retention)
 # users
-'''
+
 fig = go.Figure()
-fig.add_trace(go.Scatter(x=yearn_users_data['date'], y=yearn_users_data['total_users'],
+fig.add_trace(go.Scatter(x=cream_users_data['date'], y=cream_users_data['total_users'],
                     mode='lines',
                     name='lines',
                     line_color='blue'))
-'''
+
 #retention 
-fig = px.bar(sushiswap_retention, sushiswap_retention["month"], y=sushiswap_retention["count"], color="status")
+#fig = px.bar(sushiswap_retention, sushiswap_retention["month"], y=sushiswap_retention["count"], color="status")
 
 
 
@@ -34,7 +35,7 @@ fig.update_layout(
         ticks='outside',
         tickfont=dict(
             family='Arial',
-            size=14,
+            size=22,
             color='rgb(82, 82, 82)',
         ),
     ),
@@ -46,7 +47,7 @@ fig.update_layout(
         gridcolor='#F4F4F4',
         tickfont=dict(
             family='Arial',
-            size=14,
+            size=22,
             color='blue',
         ),
     ),
