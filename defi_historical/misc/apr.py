@@ -1,7 +1,7 @@
-base = 1000000
-base2=1000000
-base3=1000000
-daily_return = .001369
+base = 100000
+base2=100000
+base3=100000
+daily_return = .0041095
 day = []
 daily_value = []
 daily_noncompounding_value = []
@@ -14,7 +14,7 @@ while y < x:
     y+=1
     day.append(y)
     non_compounding=(base2*daily_return)
-    base2=1000000
+    base2=100000
     base3=base3+non_compounding
     daily_noncompounding_value.append(base3)
 print(daily_value)
