@@ -19,10 +19,11 @@ fig = go.Figure()
 fig.add_trace(go.Scatter(x=lending_data['day'], y=lending_data['outstanding_usd_value'], fill='tozeroy',
                     mode='none' # override default markers+lines
                     ))
+'''
 fig.add_trace(go.Scatter(x=borrow_data['day'], y=borrow_data['outstanding_usd_value'], fill='tozeroy',
                     mode='none' # override default markers+lines
                     ))
-
+'''
 fig.update_layout(
     xaxis=dict(
         showline=True,

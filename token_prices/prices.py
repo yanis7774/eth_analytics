@@ -14,7 +14,7 @@ terrausd_price = []
 sushi_price = []
 
 # retreive JSONs
-eth_price_history = cg.get_coin_market_chart_by_id(id='ethereum', vs_currency='usd', days='30')
+eth_price_history = cg.get_coin_market_chart_by_id(id='olympus', vs_currency='usd', days='60')
 dpi_price_history = cg.get_coin_market_chart_by_id(id='defipulse-index', vs_currency='usd', days='30')
 
 # get prices 
@@ -28,6 +28,10 @@ for x in dpi_price_dict:
     date.append(datetime.fromtimestamp(x[0]/1000))
     dpi_price.append(x[1])
 
+print(date)
+print(eth_price)
+
+'''
 eth_price = eth_price[::24]
 dpi_price = dpi_price[::24]
 total_yield = .28
@@ -48,7 +52,7 @@ import statistics
 list_returns_percent_a = [100 * (b - a) / a for a, b in zip(dpi_price[::1], dpi_price[1::1])]
 print(list_returns_percent_a)
 print(statistics.pstdev(list_returns_percent_a))
-
+'''
 '''
 solana_price_history = cg.get_coin_market_chart_by_id(id='defi-pulseindex', vs_currency='usd', days='30')
 price_dict = solana_price_history['prices']
@@ -63,14 +67,15 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 
-'''
+
 fig = make_subplots(specs=[[{"secondary_y": True}]])
 
 
 fig.add_trace(go.Scatter(x=date, y=eth_price,
                     mode='lines',
-                    name='ETH Price',
+                    name='OHM Price',
                     line_color='blue'))
+'''
 fig.add_trace(go.Scatter(x=date, y=solana_price,
                     mode='lines',
                     name='SOL Price',yaxis='y2'))
@@ -85,6 +90,7 @@ fig.add_trace(go.Scatter(x=date, y=terrausd_price,
                     mode='lines',
                     name='TerraUSD Price',
                     line_color='blue'))
+'''
 fig.update_layout(
     xaxis=dict(
         showline=True,
@@ -176,4 +182,3 @@ fig.add_layout_image(
 )
 
 fig.show()
-'''

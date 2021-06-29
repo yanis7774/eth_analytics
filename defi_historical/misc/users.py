@@ -14,7 +14,7 @@ print(uniswap_retention)
 # users
 
 fig = go.Figure()
-fig.add_trace(go.Scatter(x=cream_users_data['date'], y=cream_users_data['total_users'],
+fig.add_trace(go.Scatter(x=users_data['date'], y=users_data['total_users'],
                     mode='lines',
                     name='lines',
                     line_color='blue'))

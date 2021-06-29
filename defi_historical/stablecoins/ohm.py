@@ -6,9 +6,15 @@ import plotly.express as px
 ohm_apy_data = pd.read_csv('data/ohm_apy.csv')  
 ohm_staked_data = pd.read_csv('data/ohm_staked.csv')  
 ohm_treasury_data = pd.read_csv('data/ohm_treasury.csv')  
+ohm_marketcap_data = pd.read_csv('data/ohm_marketcap.csv')  
+ohm_holders_data = pd.read_csv('data/ohm_holders.csv')  
+ohm_runway_data = pd.read_csv('data/ohm_runway.csv')  
+ohm_rfv_data = pd.read_csv('data/ohm_rfv.csv')  
+ohm_pol_data = pd.read_csv('data/ohm_pol.csv')  
+
 
 #print(ohm_apy_data.columns)
-fig = px.line(ohm_apy_data, x="evt_block_time", y="apy")
+fig = px.line(ohm_pol_data, x="date", y="pol")
 
 
 fig.update_layout(
@@ -22,7 +28,7 @@ fig.update_layout(
         ticks='outside',
         tickfont=dict(
             family='Arial',
-            size=14,
+            size=20,
             color='rgb(82, 82, 82)',
         ),
     ),
@@ -34,7 +40,7 @@ fig.update_layout(
         gridcolor='#F4F4F4',
         tickfont=dict(
             family='Arial',
-            size=14,
+            size=20,
             color='grey',
         ),
     ),
